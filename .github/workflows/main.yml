@@ -1,0 +1,15 @@
+name: Pull request checks
+
+on:
+  pull_request:
+    branches: [ $default-branch ]
+
+jobs:
+    check_tests:
+      name: Run tests
+      runs-on: ubuntu-22.04
+      steps:
+      - name: Install uv
+        uses: astral-sh/setup-uv@v6
+      - name: Run pytest
+        run: make test
